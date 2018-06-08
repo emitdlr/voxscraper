@@ -6,7 +6,7 @@ var request = require('request');
 var Note = require('./models/note.js');
 var Article = require('./models/article.js');
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoscrape";
 
 var app = express();
 
