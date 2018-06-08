@@ -1,51 +1,17 @@
-$.getJSON("/articles", function(data) {
-	for (var i = 0; i < data.length; i++) {
-		$("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + "<a href='" + data[i].link + "'>" + data[i].link + "</a></p>");
-	}
-});
 
-$(document).on("click", "#scrape", function() {
-	window.location = "http://localhost:3000/scrape";
-});
+var express = require('express');
+var mongoose = require('../../../lib');
 
-$(document).on("click", "p", function() {
-	$("#notes").empty();
-	var thisId = $(this).attr("data-id");
+var uri = 'mongodb://localhost/mongoose-shared-connection';
+global.db = mongoose.createConnection(uri);
 
-	$.ajax({
-		method: "GET",
-		url: "/articles/" + thisId
-	})
-	  .done(function(data) {
-	  	console.log(data);
-	  	$("#notes").append("<h2>" + data.title + "</h2>");
-	  	$("#notes").append("<input id='titleinput' name='title' />");
-	  	$("#notes").append("<textarea id='bodyinput' name='body' ></textarea>");
-	  	$("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+var routes = require('./routes');
 
-	  	if (data.note) {
-	  		$("#titleinput").val(data.note.title);
-	  		$("#bodyinput").val(data.note.body);
-	  	}
-	  });
-});
+var app = express();
+app.get('/', routes.home);
+app.get('/insert', routes.insert);
+app.get('/name', routes.modelName);
 
-$(document).on("click", "#savenote", function() {
-	var thisId = $(this).attr("data-id");
-
-	$.ajax({
-		method: "POST",
-		url: "/articles/" + thisId,
-		data: {
-			title: $("#titleinput").val(),
-			body: $("bodyinput").val()
-		}
-	})
-	  .done(function(data) {
-	  	console.log(data);
-	  	$("#notes").empty();
-	  });
-
-  	$("#titleinput").val("");
-  	$("#bodyinput").val("");
+app.listen(8000, function() {
+  console.log('listening on http://localhost:8000');
 });
