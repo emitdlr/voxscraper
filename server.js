@@ -7,6 +7,7 @@ var Note = require('./models/note.js');
 var Article = require('./models/article.js');
 
 mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 var app = express();
 
