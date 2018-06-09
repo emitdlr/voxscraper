@@ -11,10 +11,8 @@ var request = require("request");
 var cheerio = require("cheerio");
 // Set mongoose to leverage built in JavaScript ES6 Promises
 mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
 
-
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 8000;
 
 // Initialize Express
 var app = express();
@@ -39,7 +37,7 @@ var routes = require("./controllers/scraper_controller.js");
 
 app.use("/", routes);
 
-mongoose.connect("mongodb://emit@utexas.edu:Ail33n2oo8!@ds153700.mlab.com:53700/heroku_vqn8cpvg);
+mongoose.connect("mongodb://heroku_k6bthxgf:Ail33n2oo8!@ds153700.mlab.com:53700/heroku_k6bthxgf");
 
 var db = mongoose.connection;
 
