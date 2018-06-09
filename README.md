@@ -4,7 +4,7 @@
 - Mongo Scraper is a web application that utilizes Mongoose and Cheerio to scrape articles from Vox, and allows users to save articles and to make notes.
 
 ## Live Site
-- https://aqueous-crag-13035.herokuapp.com/
+- https://afternoon-gorge-31656.herokuapp.com/
 
 ## Technologies Used
 - Node.js
