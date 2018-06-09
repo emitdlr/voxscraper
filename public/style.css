@@ -1,48 +1,33 @@
-html {
-	font-size: 12px;
+.new-article-btn {
+  margin-top: 10px;
 }
 
-li { 
-    margin-bottom: 1%;
+.fa-github {
+  font-size: 30px;
 }
 
-p {
-	font-size: 16px;
-	margin-left: 1%;
-	margin-top: 1%;
+.title-link {
+  text-decoration: none;
+  color: #000;
 }
 
-#bodyinput {
-    width: 50%;
+.title-link:hover {
+  text-decoration: none;
+  color: #2c7df7;
 }
 
-.jumbotron {
-	overflow: hidden;
-    background-size: 50%;
-    background-position: center;
-    background-image: url('../images/newspaper.jpg');
-    background-repeat: no-repeat;
-    height: 400px;
-    width: 100%;
+textarea {
+  display: block;
+  height: 200px;
+  font-size: 16px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #cfcfcf;
 }
 
-.panel-heading.row {
-	width: 100%;
-    margin-left: 0%;
-}
-
-.panel-primary {
-    height: 135px;
-}
-
-#savenote {
-    display: block;
-}
-
-/* 
-  These rules take effect when the browser's width
-  is 640px or less.
-*/
-@media screen and (max-width: 640px) {
-	
+#note {
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #616161;
+  letter-spacing: 1px;
 }

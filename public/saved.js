@@ -1,29 +1,13 @@
-$.getJSON("/articles", function(data) {
+$.getJSON("/saved", function(data) {
   for (var i = 0; i < data.length; i++) {
 
-     $("#articles").append(
-      "<div class='col-sm-4' style='margin-bottom:60px;'><div class='card'><div class='card-body'><a class='title-link' href='" + data[i].link +"'><h5>" + data[i].title + "</h5></a><hr><p class='card-text'>" + data[i].snippet + "</p><button data-id='" + data[i]._id + "' class='btn-note btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#myModal' style='margin-right:10px;'>Note</button><button id='btn-save' data-id='" + data[i]._id + "' class='btn btn-outline-primary btn-sm'>Save Article</button></div></div></div>"
+  $("#articles").append(
+      "<div class='col-sm-4' style='margin-bottom:60px;'><div class='card'><div class='card-body'><a class='title-link' href='" + data[i].link +"'><h5>" + data[i].title + "</h5></a><hr><p class='card-text'>" + data[i].snippet + "</p><button data-id='" + data[i]._id + "' class='btn-note btn btn-outline-primary btn-sm' data-toggle='modal' data-target='#myModal' style='margin-right:10px;'>Note</button><button id='btn-delete' data-id='" + data[i]._id + "' class='btn btn-outline-danger btn-sm'>Delete</button></div></div></div>"
     );
 }
 
   console.log(data);
 });
-
-
-// When you click the Fetch button
-$(document).on("click", ".btn-fetch", function() {
-  alert('Articles up-to-date!');
-
-  $.ajax({
-    method: "GET",
-    url: "/scrape"
-  })
-    .done(function(data) {
-      location.reload();
-    });
-});
-
-
 
 // When you click the Note button
 $(document).on("click", ".btn-note", function() {
@@ -33,7 +17,6 @@ $(document).on("click", ".btn-note", function() {
 
   // Save the id from .btn-note
   var thisId = $(this).attr("data-id");
-  console.log(thisId);
 
   $.ajax({
     method: "GET",
@@ -61,7 +44,7 @@ $(document).on("click", ".btn-note", function() {
 $(document).on("click", "#savenote", function() {
   // Grab the id associated with the article from the submit button
   var thisId = $(this).attr("data-id");
-  console.log(thisId);
+  // console.log(thisId);
 
   // Run a POST request to change the note, using what's entered in the inputs
   $.ajax({
@@ -85,22 +68,20 @@ $(document).on("click", "#savenote", function() {
 });
 
 
-
-// When you click the Save Article button
-$(document).on("click", "#btn-save", function() {
-  $(this).addClass("disabled");
+// When you click the Delete button
+$(document).on("click", "#btn-delete", function() {
+  
   var thisId = $(this).attr("data-id");
   console.log(thisId);
 
   $.ajax({
     method: "PUT",
-    url: "/saved/" + thisId,
+    url: "/delete/" + thisId,
    
   })
   
   .done(function(data) {
       console.log(data);
+      location.reload();
   });
 });
-
-

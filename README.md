@@ -1,10 +1,17 @@
-# news-scraper
-News scraper app that uses cheerio to scrape a news site, mongodb to save news articles and comments, and express to serve the site and data.
+# Mongo-Scraper
 
-I've managed to tweak this a bit so it doesn't look horrible and the main functionality works as expected.
+## Overview
+- Mongo Scraper is a web application that utilizes Mongoose and Cheerio to scrape articles from Vox, and allows users to save articles and to make notes.
 
-More could be done to inform the user, and it could be a bit flashier, but it's clean and it works all right for an MVP.
+## Live Site
+- https://aqueous-crag-13035.herokuapp.com/
 
-Here's a link to the app: https://pure-woodland-61367.herokuapp.com/
-
-Phew-- busy week. Onward to react.
+## Technologies Used
+- Node.js
+- MongoDB/ Mongoose
+- cheerio NPM Package - https://www.npmjs.com/package/cheerio
+- request NPM Package - https://www.npmjs.com/package/request
+- express NPM Package - https://www.npmjs.com/package/express
+- body-parser NPM Package - https://www.npmjs.com/package/body-parser
+- morgan NPM Package - https://www.npmjs.com/package/morgan
+- moment NPM Package - https://www.npmjs.com/package/moment
